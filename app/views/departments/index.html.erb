@@ -1,0 +1,14 @@
+<h1>Departments</h1>
+<% @departments.each do |d| %>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+    </tr>
+    <tr>
+      <td><%= d.id %></td>
+      <td><%= d.title %></td>
+    </tr>
+  </table>
+
+<% end %>
