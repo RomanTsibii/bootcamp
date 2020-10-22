@@ -1,26 +1,28 @@
-class DepartmentPolicy < ApplicationPolicy
+class DevelopmentPlanPolicy < ApplicationPolicy
 
   def index?
     true
   end
 
-  def new?
-    user.admin?
+  def show?
+    true
   end
 
-  alias create? new?
+  def create?
+    user.admin
+  end
+
+  alias new? create?
 
   def update?
-    user.admin?
+    user.admin
   end
 
   alias edit? update?
 
   def destroy?
-    user.admin?
+    user.admin
   end
-
-
 
   class Scope < Scope
     def resolve

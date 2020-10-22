@@ -1,4 +1,5 @@
 class DepartmentsController < ApplicationController
+  before_action :department_authorize, only:[:new, :create]
 
   def index
     @departments = Department.all
@@ -7,12 +8,10 @@ class DepartmentsController < ApplicationController
 
   def new
     @department = Department.new
-    authorize @department
   end
 
   def create
     @department = Department.new(department_params)
-    authorize @department
     if @department.save
       redirect_to departments_path
     else
@@ -23,5 +22,9 @@ class DepartmentsController < ApplicationController
   private
   def department_params
     params.require(:department).permit(:title, :image)
+  end
+
+  def department_authorize
+    authorize @department
   end
 end
