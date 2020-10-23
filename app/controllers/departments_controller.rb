@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-  before_action :department_authorize, only:[:new, :create]
+  after_action :department_authorize, only:[:new,:show , :create]
 
   def index
     @departments = Department.all
@@ -8,6 +8,10 @@ class DepartmentsController < ApplicationController
 
   def new
     @department = Department.new
+  end
+
+  def show
+    @department = Department.find(params[:id])
   end
 
   def create

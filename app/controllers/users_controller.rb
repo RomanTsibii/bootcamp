@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def index
     @users = User.all
@@ -16,7 +16,7 @@ class UserController < ApplicationController
     @user = current_user
     if @user.update_attributes(current_user_params)
       flash[:notice] = "Saved..."
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       flash[:alert] = "Cannot Update..."
       render 'user/edit'
