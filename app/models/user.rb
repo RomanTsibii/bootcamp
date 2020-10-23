@@ -5,16 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum level: {
-      trainee: 0,
-      junior: 1,
-      middle: 5,
-      senior: 10
+    trainee: 0,
+    junior: 1,
+    middle: 5,
+    senior: 10
   }
   has_one_attached :avatar
 
-  enum role:{
-      member: 0,
-      admin: 100
+  enum role: {
+    member: 0,
+    admin: 100
   }
 
   belongs_to :department

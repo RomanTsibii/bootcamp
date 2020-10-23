@@ -1,5 +1,4 @@
 class DevelopmentPlanPolicy < ApplicationPolicy
-
   def index?
     true
   end
@@ -17,7 +16,6 @@ class DevelopmentPlanPolicy < ApplicationPolicy
   def update?
     user.admin
   end
-
   alias edit? update?
 
   def destroy?

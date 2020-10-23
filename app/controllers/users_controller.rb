@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
   end
@@ -15,10 +14,10 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(current_user_params)
-      flash[:notice] = "Saved..."
+      flash[:notice] = 'Saved...'
       redirect_to user_path(@user)
     else
-      flash[:alert] = "Cannot Update..."
+      flash[:alert] = 'Cannot Update...'
       render 'user/edit'
     end
   end
@@ -28,5 +27,4 @@ class UsersController < ApplicationController
   def current_user_params
     params.permit(:first_name, :last_name, :avatar)
   end
-
 end

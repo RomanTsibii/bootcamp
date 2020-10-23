@@ -4,5 +4,4 @@ module SharedScopes
   included do
     scope #:today тобто користувачі створені сьогодні
   end
-
 end

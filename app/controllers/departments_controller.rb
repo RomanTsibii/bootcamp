@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-  after_action :department_authorize, only:[:new,:show , :create]
+  after_action :department_authorize, only: %i[new show create]
 
   def index
     @departments = Department.all
@@ -24,6 +24,7 @@ class DepartmentsController < ApplicationController
   end
 
   private
+
   def department_params
     params.require(:department).permit(:title, :image)
   end
