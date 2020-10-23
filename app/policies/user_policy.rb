@@ -1,4 +1,4 @@
-class UserPlanPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   def index?
     true
   end
@@ -8,19 +8,21 @@ class UserPlanPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin
+    user.admin?
   end
 
   alias new? create?
 
   def update?
-    user.admin
+    user.admin?
   end
 
-  alias edit? update?
+  def edit?
+    user.admin?
+  end
 
   def destroy?
-    user.admin
+    user.admin?
   end
 
   class Scope < Scope

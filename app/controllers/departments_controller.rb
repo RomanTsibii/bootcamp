@@ -8,6 +8,7 @@ class DepartmentsController < ApplicationController
 
   def new
     @department = Department.new
+    DepartmentMailer.new_department(current_user).deliver_later
   end
 
   def show
