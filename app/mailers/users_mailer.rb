@@ -3,7 +3,7 @@ class UsersMailer < ApplicationMailer
 
   def invite_member(email)
     @email = email
-    @url  = 'https://github.com/scambra/devise_invitable'
+    @url = 'https://github.com/scambra/devise_invitable'
     mail(to: @email, subject: 'Invite to login')
   end
 end

@@ -1,5 +1,5 @@
 <div class="index">
-  <h1>All users <%= %></h1>
+  <h1>All users </h1>
   <table>
     <tr>
       <th>First name</th>
@@ -12,7 +12,11 @@
         <td><%= u.first_name %></td>
         <td><%= u.last_name %></td>
         <td><%= u.email %></td>
-        <th><%= u.department.title %></th>
+        <% if u.department.present? %>
+          <td><%= u.department.title %></td>
+        <% else %>
+          <td>nil</td>
+        <% end %>
       </tr>
     <% end %>
   </table>

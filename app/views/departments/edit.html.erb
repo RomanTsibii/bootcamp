@@ -1,14 +1,19 @@
-<h1>Add new department</h1>
+<h1>Edit department</h1>
 <%= form_with model: @department do |f| %>
 
   <div>
     <%= f.label :title %><br/>
     <%= f.text_field :title %>
   </div>
+  <%= form_with model: @department, action: :update, method: :post do |file| %>
+    <div>
+      Upload image<br/>
+      <%= file.file_field :image %>
+    </div>
+  <% end %>
 
   <div>
     <%= f.submit "Save", class: "btn btn-success" %>
-    <%= link_to "Back", :back, class: "btn btn-info" %>
   </div>
 
 <% end %>

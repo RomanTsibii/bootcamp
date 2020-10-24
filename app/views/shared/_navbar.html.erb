@@ -1,6 +1,10 @@
-<div class="navbar" align="right">
-  <% if user_signed_in? %>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button"%>
+<div class="navbar" >
+  <%= link_to "Departments", departments_path, class: "button" %>
+  <%= link_to "Users", users_path, class: "button" %>
+
+
+  <% if current_user %>
+    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button"%>
   <% else %>
     <%= link_to "Sign In", new_user_session_path, class: "button" %>
     <%= link_to "Sign Up", new_user_registration_path, class: "button" %>

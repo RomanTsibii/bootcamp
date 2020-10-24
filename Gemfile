@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'devise_invitable', '~> 2.0', '>= 2.0.2'
 gem 'pundit', '~> 2.1'
 gem 'rubocop', '~> 1.0'
 # gem 'mailcatcher'#, '~> 0.7.1'

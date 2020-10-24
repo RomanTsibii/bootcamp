@@ -10,32 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require_tree
  *= require_self
  */
-
-html {
-  body {
-    margin: 0;
-    padding: 0;
-
-    .navbar {
-      padding: 10px 10px ;
-      background: white;
-
-      .button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-      }
-    }
-
-    background: #34ebb4;
-  }
-}
 

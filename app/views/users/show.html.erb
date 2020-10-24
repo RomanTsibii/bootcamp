@@ -1,6 +1,8 @@
 <h1>User profile</h1>
-<%= image_tag @user.avatar, width: 300 %><br/>
+<% if @user.avatar.present? %>
+  <%= image_tag @user.avatar, width: 300 %><br/>
+<% end %>
 <%= @user.first_name %>
 <%= @user.last_name %><br/>
-<%= link_to 'Edit', edit_department_user_path(@user) %>
+<%= link_to 'Edit', edit_user_path(@user) %>
 

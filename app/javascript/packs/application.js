@@ -17,3 +17,9 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
+
+import 'bootstrap'
+
+document.addEventListener("turbolinks:load", () => {
+    $('[data-toggle="tooltip"]').tooltip()
+})
