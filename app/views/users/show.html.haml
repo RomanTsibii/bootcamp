@@ -1,0 +1,11 @@
+%h1 User profile
+- if @user.avatar.present?
+  = image_tag @user.avatar, width: 300
+  %br/
+= @user.first_name
+= @user.last_name
+%br/
+= @user.department.title
+%br/
+= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning"
+= button_to 'Delete', user_path(@user), methode: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"

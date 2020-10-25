@@ -1,0 +1,19 @@
+.index
+  %h1 Users
+  %table.table
+    %tr
+      %th ID
+      %th First name
+      %th Last name
+      %th Email
+      %th Departments
+    - @users.each do |f|
+      %tr
+        %td= f.id
+        %td= f.first_name
+        %td= f.last_name
+        %td= link_to f.email, user_path(f)
+        - if f.department.present?
+          %td= f.department.title
+        - else
+          %td nil

@@ -1,0 +1,18 @@
+.row
+  .col-md-8
+    %h1 Development plans
+  .col-md-4
+    = link_to "Create new", new_development_plan_path, class: "btn btn-success"
+- if @development_plans.present?
+  %table.table
+    %tr
+      %th ID
+      %th Title
+      %th Department
+    - @development_plans.each do |f|
+      %tr
+        %td= f.id
+        %td= link_to f.title, development_plan_path(f)
+        %td= f.department.title
+- else
+  %p Don`t have development plans

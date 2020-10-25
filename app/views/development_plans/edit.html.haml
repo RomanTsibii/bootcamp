@@ -1,0 +1,5 @@
+%h1 Edit development plan
+= form_with model: @development_plan do |f|
+  = render 'form', f: f
+  = f.submit "Update", class: "btn btn-success"
+  = link_to "Back", :back, class: "btn btn-info"

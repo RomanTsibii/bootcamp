@@ -1,0 +1,17 @@
+.row
+  .col-md-8
+    %h1 Departments
+  .col-md-4
+    = link_to "Create new", new_department_path, class: "btn btn-success"
+%table.table
+  %tr
+    %th Id
+    %th Title
+    %th Member count
+    %th photo
+  - @departments.each do |f|
+    %tr
+      %td= f.id
+      %td= link_to f.title, department_url(f)
+      %td= f.users.count
+      %td= image_tag f.image, width: 70 if f.image.present?

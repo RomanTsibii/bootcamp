@@ -1,0 +1,6 @@
+%h1 Edit department
+= form_with model: @department do |f|
+  = render 'departments/form', f: f
+  %div
+    = f.submit "Update", class: "btn btn-success"
+    = link_to "Back", :back, class: "btn btn-info"

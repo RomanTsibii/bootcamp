@@ -1,0 +1,22 @@
+= form_with(model: @user) do |f|
+  .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name
+    %br/
+  .field
+    = f.label :department
+    %br/
+    = f.select :department_id, Department.all.collect { |d| [d.title, d.id] }, include_blank: f
+    %br/
+  .field
+    = f.label :avatar
+    %br/
+    = f.label :avatar do
+      = f.file_field :avatar
+  = f.submit "Update", class: 'btn btn-success'
+  = link_to "Back", :back, class: "btn btn-info"

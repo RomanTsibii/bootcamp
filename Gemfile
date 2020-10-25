@@ -29,6 +29,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'devise_invitable', '~> 2.0', '>= 2.0.2'
 gem 'pundit', '~> 2.1'
 gem 'rubocop', '~> 1.0'
+gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 # gem 'mailcatcher'#, '~> 0.7.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,0 +1,16 @@
+%table
+  %tr
+    %th ID
+    %th Title
+    %th Department
+  %tr
+    %td= @development_plan.id
+    %td= @development_plan.title
+    %td= @development_plan.department.title
+%div
+  = link_to "Edit", edit_development_plan_path(@development_plan), |
+    class: "btn btn-warning"                                       |
+  = button_to "Delete", development_plan_path(@development_plan), |
+    method: :delete,                                              |
+    data: {confirm: "Are you sure?"},                             |
+    class: "btn btn-danger"                                       |
