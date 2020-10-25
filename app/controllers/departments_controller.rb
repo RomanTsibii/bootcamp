@@ -3,28 +3,26 @@ class DepartmentsController < ApplicationController
   before_action :department_authorize
 
   def index
-    @departments = Department.all
+    @departments = Department.order(:id)
   end
 
   def new
     @department = Department.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @department.update(department_params)
       flash[:notice] = 'Save!!'
       redirect_to department_path(@department)
     else
-      flash[:alert] = 'Don`t save'
+      flash[:alert] = 'Don`t save!'
       render 'departments/edit'
     end
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @department = Department.new(department_params)
@@ -36,8 +34,13 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    @department.destroy
-    redirect_to departments_path
+    if @department.destroy
+      flash[:notice] = 'Department destroyed!'
+      redirect_to departments_path
+    else
+      flash[:alert] = 'Can`t destroy'
+      redirect_to department_path(@department)
+    end
   end
 
   private

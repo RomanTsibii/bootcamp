@@ -1,0 +1,11 @@
+<div>
+  <%= f.label :title %><br/>
+  <%= f.text_field :title %>
+</div>
+
+<div class="field">
+  <%= f.label :image %><br/>
+  <%= f.label :image do %>
+    <%= f.file_field :image %>
+  <% end %>
+</div>

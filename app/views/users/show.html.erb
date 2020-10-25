@@ -4,5 +4,12 @@
 <% end %>
 <%= @user.first_name %>
 <%= @user.last_name %><br/>
-<%= link_to 'Edit', edit_user_path(@user) %>
+
+<%= @user.department.title %><br/>
+<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %>
+<%= button_to 'Delete', user_path(@user),
+              methode: :delete,
+              data: {confirm: "Are you sure?"},
+              class: "btn btn-danger"
+%>
 

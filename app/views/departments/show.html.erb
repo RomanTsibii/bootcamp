@@ -1,7 +1,11 @@
-<p>
-  <%= @department.id %>
-  <%= @department.title %>
-</p>
+<h1>Department</h1>
+<ul>
+  <li>ID: <%= @department.id %></li>
+  <li>Department: <%= @department.title %><br/></li>
+  <li>Member count: <%= @department.users.count %></li>
+</ul>
+  <%= image_tag @department.image, width: 300 if @department.image.present? %>
+
 <div>
   <%= link_to "Edit", edit_department_path(@department),
                 class: "btn btn-warning" %>

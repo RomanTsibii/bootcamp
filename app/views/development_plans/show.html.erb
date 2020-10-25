@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Department</th>
+  </tr>
+  <tr>
+    <td><%= @development_plan.id %></td>
+    <td><%= @development_plan.title %></td>
+    <td><%= @development_plan.department.title %></td>
+  </tr>
+</table>
+<div>
+  <%= link_to "Edit", edit_development_plan_path(@development_plan),
+              class: "btn btn-warning" %>
+  <%= button_to "Delete", development_plan_path(@development_plan),
+              method: :delete,
+              data: {confirm: "Are you sure?"},
+              class: "btn btn-danger" %>
+</div>
+

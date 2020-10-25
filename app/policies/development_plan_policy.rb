@@ -8,18 +8,18 @@ class DevelopmentPlanPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin
+    user.admin?
   end
 
   alias new? create?
 
   def update?
-    user.admin
+    user.admin?
   end
   alias edit? update?
 
   def destroy?
-    user.admin
+    user.admin?
   end
 
   class Scope < Scope

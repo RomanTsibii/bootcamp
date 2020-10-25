@@ -17,9 +17,7 @@ class UserPolicy < ApplicationPolicy
     user.admin?
   end
 
-  def edit?
-    user.admin?
-  end
+  alias edit? update?
 
   def destroy?
     user.admin?

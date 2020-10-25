@@ -1,23 +1,17 @@
 class UsersController < ApplicationController
+  before_action :user_find, only: %i[show edit update destroy]
+  before_action :user_authorize
+
   def index
-    @users = User.all
-    authorize @users
+    @users = User.order(:id)
     # UsersMailer.invite_member('invate1@gmail.com').deliver_later
   end
 
-  def show
-    @user = User.find(params[:id])
-    authorize @user
-  end
+  def show; end
 
-  def edit
-    @user = User.find(params[:id])
-    authorize @user
-  end
+  def edit; end
 
   def update
-    @user = User.find(params[:id])
-    authorize @user
     if @user.update(user_params)
       flash[:notice] = 'Saved...'
       redirect_to user_path(@user)
@@ -28,12 +22,23 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # add authorize @user
+    byebug
+    @user.destroy
+    flash[:notice] = 'User deleted!'
+    redirect_to users_path
   end
 
   private
 
+  def user_find
+    @user = User.find(params[:id])
+  end
+
+  def user_authorize
+    authorize User
+  end
+
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :avatar, :department_id)
   end
 end

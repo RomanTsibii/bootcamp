@@ -1,0 +1,9 @@
+<div>
+  <%= f.label :title %><br/>
+  <%= f.text_field :title %>
+</div>
+
+<div>
+  <%= f.label :department %><br/>
+  <%= f.select :department_id, Department.all.collect { |d| [d.title, d.id] }, include_blank: true %><br/>
+</div>

@@ -1,19 +1,21 @@
 <div class="index">
-  <h1>All users </h1>
-  <table>
+  <h1>Users </h1>
+  <table class="table">
     <tr>
+      <th>ID</th>
       <th>First name</th>
       <th>Last name</th>
       <th>Email</th>
-      <th>Department</th>
+      <th>Departments</th>
     </tr>
-    <% @users.each do |u| %>
+    <% @users.each do |f| %>
       <tr>
-        <td><%= u.first_name %></td>
-        <td><%= u.last_name %></td>
-        <td><%= u.email %></td>
-        <% if u.department.present? %>
-          <td><%= u.department.title %></td>
+        <td><%= f.id %></td>
+        <td><%= f.first_name %></td>
+        <td><%= f.last_name %></td>
+        <td><%= link_to f.email, user_path(f) %></td>
+        <% if f.department.present? %>
+          <td><%= f.department.title %></td>
         <% else %>
           <td>nil</td>
         <% end %>
