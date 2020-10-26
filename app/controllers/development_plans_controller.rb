@@ -1,5 +1,5 @@
 class DevelopmentPlansController < ApplicationController
-  before_action :development_plan_find, only: %i[edit show update destroy]
+  before_action :set_development_plan, only: %i[edit show update destroy]
   before_action :development_plan_authorize
 
   def index
@@ -46,7 +46,7 @@ class DevelopmentPlansController < ApplicationController
     params.require(:development_plan).permit(:title, :department_id)
   end
 
-  def development_plan_find
+  def set_development_plan
     @development_plan = DevelopmentPlan.find(params[:id])
   end
 

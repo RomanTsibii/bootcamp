@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-  before_action :department_find, only: %i[edit update show destroy]
+  before_action :set_department, only: %i[edit update show destroy]
   before_action :department_authorize
 
   def index
@@ -45,7 +45,7 @@ class DepartmentsController < ApplicationController
 
   private
 
-  def department_find
+  def set_department
     @department = Department.find(params[:id])
   end
 

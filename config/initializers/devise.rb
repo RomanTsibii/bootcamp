@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'romanot70@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -139,7 +139,7 @@ Devise.setup do |config|
   # After this period, the invited resource won't be able to accept the invitation.
   # When invite_for is 0 (the default), the invitation won't expire.
   # config.invite_for = 0
-  # config.scoped_views = true
+  config.scoped_views = true
   # Number of invitations users can send.
   # - If invitation_limit is nil, there is no limit for invitations, users can
   # send unlimited invitations, invitation_limit column is not used.

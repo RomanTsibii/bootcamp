@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_find, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy]
   before_action :user_authorize
 
   def index
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    byebug
     @user.destroy
     flash[:notice] = 'User deleted!'
     redirect_to users_path
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_find
+  def set_user
     @user = User.find(params[:id])
   end
 
@@ -39,6 +38,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :avatar, :department_id)
+    params.require(:user).permit(:first_name, :last_name, :avatar, :department_id, :role)
   end
 end
