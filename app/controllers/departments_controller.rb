@@ -34,11 +34,12 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    if @department.destroy
+    if @department.users.count == 0
+      @department.destroy
       flash[:notice] = 'Department destroyed!'
       redirect_to departments_path
     else
-      flash[:alert] = 'Can`t destroy'
+      flash[:alert] = "Can`t destroy, department have #{@department.users.count} users"
       redirect_to department_path(@department)
     end
   end

@@ -1,5 +1,5 @@
 class Users::InvitationsController < Devise::InvitationsController
-  before_action :user_authorize
+  before_action :user_authorize, only: %i[create new]
 
   def new
     super

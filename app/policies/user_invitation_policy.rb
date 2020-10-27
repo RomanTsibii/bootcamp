@@ -4,10 +4,4 @@ class Users::InvitationsPolicy < ApplicationPolicy
   end
 
   alias new? create?
-
-  def edit?
-    user.admin?
-  end
-
-  alias update? edit?
 end
