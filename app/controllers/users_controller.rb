@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order(:id)
-    # UsersMailer.invite_member('invate1@gmail.com').deliver_later
   end
 
   def show; end

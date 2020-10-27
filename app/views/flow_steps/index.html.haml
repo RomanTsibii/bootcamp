@@ -1,2 +1,18 @@
-%h1 FlowSteps#index
-%p Find me in app/views/flow_steps/index.html.haml
+.row
+  .col-md-8
+    %h1 Flow steps
+  .col-md-4
+    = link_to "Create new", new_flow_step_path, class: "btn btn-success"
+- if @flow_steps.present?
+  %table.table
+    %tr
+      %th ID
+      %th Title
+      %th Development plan
+    - @flow_steps.each do |f|
+      %tr
+        %td= f.id
+        %td= link_to f.title, flow_step_path(f)
+        %td= f.development_plan.title
+- else
+  %p Don`t have flow step

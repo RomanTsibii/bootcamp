@@ -3,7 +3,12 @@ class FlowStepsController < ApplicationController
   before_action :flow_step_authorize
 
   def index
-    @flow_steps = FlowStep.all
+    if params[:development_plan_id].nil?
+      @flow_steps = FlowStep.all
+    else
+      @development_plan = DevelopmentPlan.find(params[:development_plan_id])
+      @flow_steps = @development_plan.flow_steps
+    end
   end
 
   def new
