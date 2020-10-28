@@ -1,2 +1,25 @@
-%h1 Tasks#show
-%p Find me in app/views/tasks/show.html.haml
+
+%p
+  ID:
+  = @task.id
+%p
+  Title:
+  = @task.title
+%p
+  Flow Step:
+  = @task.flow_step.title
+%p
+  Description:
+  %br
+  = @task.description
+%div
+  .btn-group
+    = link_to "Edit", edit_task_path(@task),
+      class: "btn btn-warning"
+  .btn-group
+    = button_to "Delete", task_path(@task),
+             method: :delete,
+             data: {confirm: "Are you sure?"},
+             class: "btn btn-danger"
+  .btn-group
+    = link_to "Back", :back, class: "btn btn-info"

@@ -1,0 +1,18 @@
+%div
+  = f.label :title
+  %br/
+  = f.text_field :title
+%div
+  = f.label :flow_step_id
+  %br/
+  = f.select :flow_step_id, FlowStep.all.collect { |c| [c.title, c.id] }, include_blank: true
+  %br/
+%div
+  = f.label :level
+  %br/
+  = f.select :level, Task.levels.keys
+  %br/
+%div
+  = f.label :description
+  %br/
+  = f.rich_text_area :description, size: "70x5"

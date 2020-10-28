@@ -5,19 +5,28 @@
     = link_to "Create new", new_task_path, class: "btn btn-success"
 - if @tasks.present?
   %table.table
+
     %tr
       %th Level
       - @flow_steps.each do |fs|
         %th= fs.title
+      -@tasks.each do |f|
+        %tr
+          %td= f.level
+          %td
+            = f.title if f.flow_step.title ==  FlowStep.all.find(1).title
+          %td
+            = f.title if f.flow_step.title == FlowStep.all.find(2).title
+          %td
+            = f.title if f.flow_step.title == FlowStep.all.find(3).title
 
-    - @tasks.each do |f|
-      %tr
-        %td= f.level
-        %td= f.title
+
+
     -#%tr
-    -#  = form_with model: @task, method: :post do |input|
-    -#    %td= input.text_field :title
-        -#%td= input.submit "Save", class: "btn btn-success"
+    -#- @tasks.each do |f|
+    -#  %td= f.level
+    -#  %td= link_to f.title, task_path(f)
+
 
 
 - else

@@ -1,2 +1,5 @@
-%h1 Tasks#new
-%p Find me in app/views/tasks/new.html.haml
+%h1 Create new Task
+= form_with model: @task do |f|
+  = render 'form', f: f
+  = f.submit "Save", class: "btn btn-success"
+  = link_to "Back", :back, class: "btn btn-info"
