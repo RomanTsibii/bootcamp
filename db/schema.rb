@@ -71,10 +71,8 @@ ActiveRecord::Schema.define(version: 20_201_027_081_832) do
     t.string 'title'
     t.integer 'level'
     t.bigint 'flow_step_id'
-    t.bigint 'development_plan_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
-    t.index ['development_plan_id'], name: 'index_tasks_on_development_plan_id'
     t.index ['flow_step_id'], name: 'index_tasks_on_flow_step_id'
   end
 
@@ -111,7 +109,6 @@ ActiveRecord::Schema.define(version: 20_201_027_081_832) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'development_plans', 'departments'
   add_foreign_key 'flow_steps', 'development_plans'
-  add_foreign_key 'tasks', 'development_plans'
   add_foreign_key 'tasks', 'flow_steps'
   add_foreign_key 'users', 'departments'
 end

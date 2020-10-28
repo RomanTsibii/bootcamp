@@ -1,5 +1,4 @@
 class Task < ApplicationRecord
-  belongs_to :development_plan
   belongs_to :flow_step
 
   enum level: {
