@@ -9,4 +9,7 @@ class Task < ApplicationRecord
   }
 
   has_rich_text :description
+
+  validates :title, presence: true
+  validates :level, presence: true
 end
