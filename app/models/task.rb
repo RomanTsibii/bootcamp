@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :flow_step
+  has_many :task_managements
+  has_many :users, :through => :task_managements
 
   enum level: {
     trainee: 0,

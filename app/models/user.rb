@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :invitable
 
+  belongs_to :department
+
+  has_many :task_managements
+  has_many :tasks, :through => :task_managements
+
   enum level: {
     trainee: 0,
     junior: 1,
@@ -16,8 +21,6 @@ class User < ApplicationRecord
     member: 0,
     admin: 100
   }
-
-  belongs_to :department
 
   validates :first_name, presence: true
   validates :last_name, presence: true
