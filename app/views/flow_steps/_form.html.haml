@@ -1,0 +1,9 @@
+%div
+  = f.label :title
+  %br/
+  = f.text_field :title
+%div
+  = f.label :development_plan_id
+  %br/
+  = f.select :development_plan_id, DevelopmentPlan.all.collect { |d| [d.title, d.id] }, include_blank: true
+  %br/

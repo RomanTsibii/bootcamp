@@ -9,6 +9,10 @@
           = link_to "Users", users_path, class: "nav-link"
         %li.nav-item.active
           = link_to "Development plans", development_plans_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "Flow Steps", flow_steps_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "Tasks", tasks_path, class: "nav-link"
     %form.form-inline.mt-2.mt-md-0
       - if current_user
         = button_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar_hidden_button"

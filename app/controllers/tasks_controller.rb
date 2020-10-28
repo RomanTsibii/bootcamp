@@ -47,7 +47,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :development_plan_id, :level, :flow_step_id)
+    params.require(:task).permit(:title, :level, :flow_step_id)
   end
 
   def task_authorize

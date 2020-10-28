@@ -16,10 +16,11 @@ class FlowStepsController < ApplicationController
   end
 
   def create
-    @flow_step = FlowStep.new
+    @flow_step = FlowStep.new(flow_step_params)
     if @flow_step.save
       redirect_to flow_step_path(@flow_step)
     else
+      flash[:alert] = "Can`t save! Input 'Title' and 'Development plan'."
       render 'new'
     end
   end
@@ -31,7 +32,7 @@ class FlowStepsController < ApplicationController
   def update
     if @flow_step.update(flow_step_params)
       flash[:notice] = 'Save!!'
-      redirect_to flow_step_path(@task)
+      redirect_to flow_step_path(@flow_step)
     else
       flash[:alert] = 'Don`t save!'
       render 'flow_steps/edit'

@@ -8,11 +8,23 @@
     %tr
       %th ID
       %th Title
+      %th Task count
       %th Development plan
+      %th Buttons
     - @flow_steps.each do |f|
       %tr
         %td= f.id
         %td= link_to f.title, flow_step_path(f)
+        %td= link_to f.tasks.count, flow_step_tasks_path(f)
         %td= f.development_plan.title
+        %td
+          .btn-group
+            = link_to "Edit", edit_flow_step_path(f),
+              class: "btn btn-warning"
+          .btn-group
+            = button_to "Delete", flow_step_path(f),
+             method: :delete,
+             data: {confirm: "Are you sure?"},
+             class: "btn btn-danger"
 - else
   %p Don`t have a flow step

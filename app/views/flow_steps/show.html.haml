@@ -1,2 +1,21 @@
-%h1 FlowSteps#show
-%p Find me in app/views/flow_steps/show.html.haml
+
+%p
+  ID:
+  = @flow_step.id
+%p
+  Title:
+  = @flow_step.title
+%p
+  Development Plan:
+  = @flow_step.development_plan.title
+%div
+  .btn-group
+    = link_to "Edit", edit_flow_step_path(@flow_step),
+      class: "btn btn-warning"
+  .btn-group
+    = button_to "Delete", flow_step_path(@flow_step),
+             method: :delete,
+             data: {confirm: "Are you sure?"},
+             class: "btn btn-danger"
+  .btn-group
+    = link_to "Back", :back, class: "btn btn-info"
