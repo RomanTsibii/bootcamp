@@ -5,78 +5,44 @@
     = link_to "Create new", new_task_path, class: "btn btn-success"
 - if @tasks.present?
   .row.border.border-dark.rounded.mb-1
-    .col Trainee
+    .col.col-lg-1 Trainee
     - @flow_steps.each do |flow_step|
       .col
         = flow_step.title
         %br/
         - @tasks.each do |task|
           - if task.level == "trainee" && task.flow_step == flow_step
-            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm btn-block"
             %br/
   .row.border.border-dark.rounded.mb-1
-    .col Junior
+    .col.col-lg-1 Junior
     - @flow_steps.each do |flow_step|
       .col
         = flow_step.title
         %br/
         - @tasks.each do |task|
           - if task.level == "junior" && task.flow_step == flow_step
-            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm btn-block"
             %br/
   .row.border.border-dark.rounded.mb-1
-    .col Middle
+    .col.col-lg-1 Middle
     - @flow_steps.each do |flow_step|
       .col
         = flow_step.title
         %br/
         - @tasks.each do |task|
           - if task.level == "middle" && task.flow_step == flow_step
-            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm btn-block"
             %br/
   .row.border.border-dark.rounded.mb-1
-    .col Senior
+    .col.col-lg-1 Senior
     - @flow_steps.each do |flow_step|
       .col
         = flow_step.title
         %br/
         - @tasks.each do |task|
           - if task.level == "senior" && task.flow_step == flow_step
-            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm btn-block"
             %br/
-
-
-
-
-
-
-
-
-
-  -#
-  -# %table.table
-  -#   %tr
-  -#     %th Level
-  -#     - @flow_steps.each do |fs|
-  -#       %th= fs.title
-  -#     -@tasks.each do |f|
-  -#       %tr
-  -#         %td= f.level
-  -#         %td
-  -#           = f.title if f.flow_step.title ==  FlowStep.all.find(1).title
-  -#         %td
-  -#           = f.title if f.flow_step.title == FlowStep.all.find(2).title
-  -#         %td
-  -#           = f.title if f.flow_step.title == FlowStep.all.find(3).title
-
-
-
-    -#%tr
-    -#- @tasks.each do |f|
-    -#  %td= f.level
-    -#  %td= link_to f.title, task_path(f)
-
-
-
 - else
   %p Don`t have tasks
