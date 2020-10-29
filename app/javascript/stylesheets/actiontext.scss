@@ -5,7 +5,7 @@
 //
 //= require trix/dist/trix
 
-@import "~trix/dist/trix";
+@import "../../../node_modules/trix/dist/trix";
 
 
 // We need to override trix.css’s image gallery styles to accommodate the

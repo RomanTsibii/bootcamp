@@ -22,5 +22,7 @@ import 'bootstrap'
 document.addEventListener("turbolinks:load", () => {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+import '../stylesheets/application.scss'
 require("trix")
 require("@rails/actiontext")
