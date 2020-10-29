@@ -18,5 +18,9 @@
     %br/
     = f.label :avatar do
       = f.file_field :avatar
+  .field
+    = f.label :level
+    %br/
+    = f.select :level, User.levels.keys
   = f.submit "Update", class: 'btn btn-success'
   = link_to "Back", :back, class: "btn btn-info"

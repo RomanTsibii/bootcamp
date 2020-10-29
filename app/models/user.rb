@@ -7,7 +7,7 @@ class User < ApplicationRecord
   belongs_to :department
 
   has_many :task_managements
-  has_many :tasks, :through => :task_managements
+  has_many :tasks, through: :task_managements
 
   enum level: {
     trainee: 0,
