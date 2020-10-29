@@ -4,21 +4,70 @@
   .col-md-4
     = link_to "Create new", new_task_path, class: "btn btn-success"
 - if @tasks.present?
-  %table.table
+  .row.border.border-dark.rounded.mb-1
+    .col Trainee
+    - @flow_steps.each do |flow_step|
+      .col
+        = flow_step.title
+        %br/
+        - @tasks.each do |task|
+          - if task.level == "trainee" && task.flow_step == flow_step
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            %br/
+  .row.border.border-dark.rounded.mb-1
+    .col Junior
+    - @flow_steps.each do |flow_step|
+      .col
+        = flow_step.title
+        %br/
+        - @tasks.each do |task|
+          - if task.level == "junior" && task.flow_step == flow_step
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            %br/
+  .row.border.border-dark.rounded.mb-1
+    .col Middle
+    - @flow_steps.each do |flow_step|
+      .col
+        = flow_step.title
+        %br/
+        - @tasks.each do |task|
+          - if task.level == "middle" && task.flow_step == flow_step
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            %br/
+  .row.border.border-dark.rounded.mb-1
+    .col Senior
+    - @flow_steps.each do |flow_step|
+      .col
+        = flow_step.title
+        %br/
+        - @tasks.each do |task|
+          - if task.level == "senior" && task.flow_step == flow_step
+            = link_to task.title, task_path(task), class: "btn btn-light btn-sm"
+            %br/
 
-    %tr
-      %th Level
-      - @flow_steps.each do |fs|
-        %th= fs.title
-      -@tasks.each do |f|
-        %tr
-          %td= f.level
-          %td
-            = f.title if f.flow_step.title ==  FlowStep.all.find(1).title
-          %td
-            = f.title if f.flow_step.title == FlowStep.all.find(2).title
-          %td
-            = f.title if f.flow_step.title == FlowStep.all.find(3).title
+
+
+
+
+
+
+
+
+  -#
+  -# %table.table
+  -#   %tr
+  -#     %th Level
+  -#     - @flow_steps.each do |fs|
+  -#       %th= fs.title
+  -#     -@tasks.each do |f|
+  -#       %tr
+  -#         %td= f.level
+  -#         %td
+  -#           = f.title if f.flow_step.title ==  FlowStep.all.find(1).title
+  -#         %td
+  -#           = f.title if f.flow_step.title == FlowStep.all.find(2).title
+  -#         %td
+  -#           = f.title if f.flow_step.title == FlowStep.all.find(3).title
 
 
 

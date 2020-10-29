@@ -4,7 +4,7 @@ class FlowStepsController < ApplicationController
 
   def index
     if params[:development_plan_id].nil?
-      @flow_steps = FlowStep.all
+      @flow_steps = FlowStep.order(:id)
     else
       @development_plan = DevelopmentPlan.find(params[:development_plan_id])
       @flow_steps = @development_plan.flow_steps

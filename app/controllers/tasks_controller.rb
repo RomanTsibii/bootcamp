@@ -16,8 +16,8 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
-    @flow_steps = FlowStep.all
+    @tasks = Task.order(:id)
+    @flow_steps = FlowStep.order(:id)
   end
 
   def show; end
