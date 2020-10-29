@@ -46,7 +46,10 @@ class DevelopmentPlansController < ApplicationController
   end
 
   def set_development_plan
-    @development_plan = DevelopmentPlan.find(params[:id])
+    return if (@development_plan = DevelopmentPlan.find_by(id: params[:id]))
+
+    flash[:alert] = "Development plan #{params[:id]} could not be found"
+    redirect_to development_plans_path
   end
 
   def development_plan_authorize

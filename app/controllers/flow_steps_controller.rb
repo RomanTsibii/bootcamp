@@ -48,7 +48,10 @@ class FlowStepsController < ApplicationController
   private
 
   def set_flow_step
-    @flow_step = FlowStep.find(params[:id])
+    return if (@flow_step = FlowStep.find_by(id: params[:id]))
+
+    flash[:alert] = "Flow step #{params[:id]} could not be found"
+    redirect_to flow_steps_path
   end
 
   def flow_step_params

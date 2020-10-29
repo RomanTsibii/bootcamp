@@ -47,7 +47,10 @@ class DepartmentsController < ApplicationController
   private
 
   def set_department
-    @department = Department.find(params[:id])
+    return if (@department = Department.find_by(id: params[:id]))
+
+    flash[:alert] = "Department #{params[:id]} could not be found"
+    redirect_to departments_path
   end
 
   def department_params

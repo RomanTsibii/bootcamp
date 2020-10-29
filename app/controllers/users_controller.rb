@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     return if (@user = User.find_by(id: params[:id]))
 
     flash[:alert] = "User #{params[:id]} could not be found"
-    redirect_to root_path
+    redirect_to users_path
   end
 
   def user_authorize
