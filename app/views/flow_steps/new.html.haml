@@ -1,5 +1,5 @@
 %h1 Create new Flow Step
-= form_with model: @flow_step do |f|
+= form_with(model: @flow_step, url: [@development_plan, @flow_step], local: true) do |f|
   = render 'form', f: f
   = f.submit "Save", class: "btn btn-success"
   = link_to "Back", :back, class: "btn btn-info"

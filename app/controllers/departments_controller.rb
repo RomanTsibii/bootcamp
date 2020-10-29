@@ -14,11 +14,11 @@ class DepartmentsController < ApplicationController
 
   def update
     if @department.update(department_params)
-      flash[:notice] = 'Save!!'
+      flash[:notice] = 'Department was successfully updated.'
       redirect_to department_path(@department)
     else
-      flash[:alert] = 'Don`t save!'
-      render 'departments/edit'
+      flash[:alert] = @department.errors.messages
+      render :edit
     end
   end
 
@@ -27,21 +27,17 @@ class DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
     if @department.save
+      flash[:notice] = 'Department was successfully created.'
       redirect_to department_path(@department)
     else
-      render 'new'
+      flash[:alert] = @department.errors.messages
+      render :new
     end
   end
 
   def destroy
-    if @department.users.count == 0
-      @department.destroy
-      flash[:notice] = 'Department destroyed!'
-      redirect_to departments_path
-    else
-      flash[:alert] = "Can`t destroy, department have #{@department.users.count} users"
-      redirect_to department_path(@department)
-    end
+    flash[:alert] = @department.errors.messages unless @department.destroy
+    redirect_to departments_path
   end
 
   private
@@ -49,7 +45,7 @@ class DepartmentsController < ApplicationController
   def set_department
     return if (@department = Department.find_by(id: params[:id]))
 
-    flash[:alert] = "Department #{params[:id]} could not be found"
+    flash[:alert] = "Department #{params[:id]} could not be found."
     redirect_to departments_path
   end
 

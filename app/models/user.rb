@@ -4,10 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :invitable
 
-  belongs_to :department
-
   has_many :task_managements, dependent: :destroy
   has_many :tasks, through: :task_managements
+  belongs_to :department
+
+  has_one_attached :avatar
 
   enum level: {
     trainee: 0,
@@ -15,7 +16,6 @@ class User < ApplicationRecord
     middle: 5,
     senior: 10
   }
-  has_one_attached :avatar
 
   enum role: {
     member: 0,

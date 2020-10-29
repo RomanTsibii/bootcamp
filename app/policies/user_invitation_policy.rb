@@ -1,7 +1,9 @@
-class Users::InvitationsPolicy < ApplicationPolicy
-  def create?
-    user.admin?
-  end
+module Users
+  class InvitationsPolicy < ApplicationPolicy
+    def create?
+      user.admin?
+    end
 
-  alias new? create?
+    alias new? create?
+  end
 end

@@ -12,11 +12,12 @@ class DevelopmentPlansController < ApplicationController
 
   def create
     @development_plan = DevelopmentPlan.new(development_plan_params)
-    @department = Department.all
     if @development_plan.save
+      flash[:notice] = 'Development plan was successfully created.'
       redirect_to development_plan_path(@development_plan)
     else
-      render 'development_plans/new'
+      flash[:alert] = @development_plan.errors.messages
+      render :new
     end
   end
 
@@ -26,11 +27,11 @@ class DevelopmentPlansController < ApplicationController
 
   def update
     if @development_plan.update(development_plan_params)
-      flash[:notice] = 'Save!!'
+      flash[:notice] = 'Development plan was successfully updated.'
       redirect_to development_plan_path(@development_plan)
     else
-      flash[:alert] = 'Don`t save!'
-      render 'development_plans/edit'
+      flash[:alert] = @development_plan.errors.messages
+      render :edit
     end
   end
 

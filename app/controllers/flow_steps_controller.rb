@@ -1,14 +1,10 @@
 class FlowStepsController < ApplicationController
   before_action :set_flow_step, only: %i[show edit update destroy]
   before_action :flow_step_authorize
+  before_action :set_development_plan, only: %i[index create new]
 
   def index
-    if params[:development_plan_id].nil?
-      @flow_steps = FlowStep.order(:id)
-    else
-      @development_plan = DevelopmentPlan.find(params[:development_plan_id])
-      @flow_steps = @development_plan.flow_steps
-    end
+    @flow_steps = @development_plan.flow_steps.order(:id)
   end
 
   def new
@@ -17,11 +13,13 @@ class FlowStepsController < ApplicationController
 
   def create
     @flow_step = FlowStep.new(flow_step_params)
+    @flow_step.development_plan = @development_plan
     if @flow_step.save
+      flash[:notice] = 'Flow step was successfully created.'
       redirect_to flow_step_path(@flow_step)
     else
-      flash[:alert] = "Can`t save! Input 'Title' and 'Development plan'."
-      render 'new'
+      flash[:alert] = @flow_step.errors.messages
+      render :new
     end
   end
 
@@ -31,17 +29,16 @@ class FlowStepsController < ApplicationController
 
   def update
     if @flow_step.update(flow_step_params)
-      flash[:notice] = 'Save!!'
+      flash[:notice] = 'Flow step was successfully updated.'
       redirect_to flow_step_path(@flow_step)
     else
-      flash[:alert] = 'Don`t save!'
-      render 'flow_steps/edit'
+      flash[:alert] = @flow_step.errors.messages
+      render :edit
     end
   end
 
   def destroy
-    @flow_step.destroy
-    flash[:notice] = 'Flow step destroyed!'
+    flash[:alert] = @flow_step.errors.messages unless @flow_step.destroy
     redirect_to flow_steps_path
   end
 
@@ -52,6 +49,13 @@ class FlowStepsController < ApplicationController
 
     flash[:alert] = "Flow step #{params[:id]} could not be found"
     redirect_to flow_steps_path
+  end
+
+  def set_development_plan
+    return if (@development_plan = DevelopmentPlan.find_by(id: params[:development_plan_id]))
+
+    flash[:alert] = "Development plan #{params[:id]} could not be found"
+    redirect_to development_plans_path
   end
 
   def flow_step_params

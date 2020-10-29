@@ -11,10 +11,7 @@ Rails.application.routes.draw do
     resources :flow_steps
   end
 
-  resources :flow_steps do
-    resources :tasks
-  end
-
+  resources :flow_steps
   resources :tasks
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
