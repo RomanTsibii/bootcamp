@@ -21,15 +21,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    flash[:notice] = 'User deleted!'
+    flash[:alert] = @user.errors.messages unless @user.destroy
     redirect_to users_path
   end
 
   private
 
   def set_user
-    @user = User.find(params[:id])
+    return if (@user = User.find_by(id: params[:id]))
+
+    flash[:alert] = "User #{params[:id]} could not be found"
+    redirect_to root_path
   end
 
   def user_authorize

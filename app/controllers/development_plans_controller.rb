@@ -35,8 +35,7 @@ class DevelopmentPlansController < ApplicationController
   end
 
   def destroy
-    @development_plan.destroy
-    flash[:notice] = 'Development plan destroyed!'
+    flash[:alert] = @development_plan.errors.messages unless @development_plan.destroy
     redirect_to development_plans_path
   end
 
