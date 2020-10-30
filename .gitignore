@@ -39,3 +39,5 @@ yarn-debug.log*
 
 .rubocop.yml
 .rubocop_todo.yml
+
+app/assets/images/*.pdf

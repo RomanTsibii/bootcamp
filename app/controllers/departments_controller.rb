@@ -22,7 +22,21 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Department No. #{@department.id}",
+               page_size: 'A4',
+               template: "departments/show.html.haml",
+               layout: "pdf.html",
+               orientation: "Landscape",
+               lowquality: true,
+               zoom: 1,
+               dpi: 75
+      end
+    end
+  end
 
   def create
     @department = Department.new(department_params)
