@@ -28,9 +28,9 @@ class DepartmentsController < ApplicationController
       format.pdf do
         render pdf: "Department No. #{@department.id}",
                page_size: 'A4',
-               template: "departments/show.html.haml",
-               layout: "pdf.html",
-               orientation: "Landscape",
+               template: 'departments/show.html.haml',
+               layout: 'pdf.html',
+               orientation: 'Landscape',
                lowquality: true,
                zoom: 1,
                dpi: 75
