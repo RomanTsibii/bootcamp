@@ -87,7 +87,7 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.action_mailer.default_url_options = { :host => 'roman-bootcamp-2020.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'glacial-anchorage-80923.herokuapp.com/' }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
