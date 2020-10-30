@@ -1,7 +1,6 @@
 FactoryBot.define do
-  factory :comment do
+  factory :flow_step do
     title { 'title' }
-    task
-    user
+    development_plan
   end
 end
