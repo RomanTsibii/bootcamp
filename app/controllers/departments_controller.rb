@@ -23,19 +23,6 @@ class DepartmentsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: "Department No. #{@department.id}",
-               page_size: 'A4',
-               template: 'departments/show.html.haml',
-               layout: 'pdf.html',
-               orientation: 'Landscape',
-               lowquality: true,
-               zoom: 1,
-               dpi: 75
-      end
-    end
   end
 
   def create
@@ -52,6 +39,14 @@ class DepartmentsController < ApplicationController
   def destroy
     flash[:alert] = @department.errors.messages unless @department.destroy
     redirect_to departments_path
+  end
+
+  def export_as_pdf
+
+    respond_to do |format|
+      format.html { redirect_to @user, notice: 'User was successfully created.' }
+      format.json { render json: @user, status: :created, location: @user }
+    end
   end
 
   private

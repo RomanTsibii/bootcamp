@@ -1,0 +1,10 @@
+%h1 Department
+%ul
+  %li
+    ID: #{department.id}
+  %li
+    Department: #{department.title}
+    %br/
+  %li
+    Member count: #{department.users.count}
+= image_tag department.image, width: 300 if department.image.present?
