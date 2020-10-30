@@ -9,12 +9,18 @@
       %th ID
       %th Title
       %th Department
-      %th Flow steps count
+      %th Flow steps
     - @development_plans.each do |f|
       %tr
         %td= f.id
         %td= link_to f.title, development_plan_path(f)
         %td= f.department.title
-        %td= link_to f.flow_steps.count , development_plan_flow_steps_path(f)
+        - if f.flow_steps.first.present?
+          %td
+            = link_to "Create", new_development_plan_flow_step_path(f), class: "btn btn-outline-success"
+            = link_to 'Show' , development_plan_flow_steps_path(f), class: "btn btn-outline-info"
+        - else
+          %td= link_to "Create", new_development_plan_flow_step_path(f), class: "btn btn-outline-success"
+
 - else
   %p Don`t have development plans
