@@ -31,5 +31,5 @@ rails db:create<br/>
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
+git push heroku main
 * ...
