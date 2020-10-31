@@ -3,5 +3,5 @@ FactoryBot.define do
     title { 'title' }
     level { 1 }
     flow_step
- end
+  end
 end

@@ -16,7 +16,7 @@ class DevelopmentPlansController < ApplicationController
       flash[:notice] = 'Development plan was successfully created.'
       redirect_to development_plan_path(@development_plan)
     else
-      flash[:alert] = @development_plan.errors.messages
+      flash[:alert] = @development_plan.errors.full_messages
       render :new
     end
   end
@@ -30,13 +30,13 @@ class DevelopmentPlansController < ApplicationController
       flash[:notice] = 'Development plan was successfully updated.'
       redirect_to development_plan_path(@development_plan)
     else
-      flash[:alert] = @development_plan.errors.messages
+      flash[:alert] = @development_plan.errors.full_messages
       render :edit
     end
   end
 
   def destroy
-    flash[:alert] = @development_plan.errors.messages unless @development_plan.destroy
+    flash[:alert] = @development_plan.errors.full_messages unless @development_plan.destroy
     redirect_to development_plans_path
   end
 

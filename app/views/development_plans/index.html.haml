@@ -10,17 +10,37 @@
       %th Title
       %th Department
       %th Flow steps
+      %th Tasks
+      %th #
     - @development_plans.each do |f|
       %tr
         %td= f.id
         %td= link_to f.title, development_plan_path(f)
         %td= f.department.title
-        - if f.flow_steps.first.present?
+        - if f.flow_steps.present?
           %td
             = link_to "Create", new_development_plan_flow_step_path(f), class: "btn btn-outline-success"
             = link_to 'Show' , development_plan_flow_steps_path(f), class: "btn btn-outline-info"
         - else
           %td= link_to "Create", new_development_plan_flow_step_path(f), class: "btn btn-outline-success"
+
+        - if f.tasks.present?
+          %td
+            = link_to "Create", new_development_plan_task_path(f), class: "btn btn-outline-success"
+            = link_to 'Show' , development_plan_tasks_path(f), class: "btn btn-outline-info"
+        - elsif f.flow_steps.present?
+          %td= link_to "Create", new_development_plan_task_path(f), class: "btn btn-outline-success"
+        - else
+          %td
+        %td
+          .btn-group
+            = link_to "Edit", edit_development_plan_path(f),
+              class: "btn btn-warning"
+          .btn-group
+            = button_to "Delete", development_plan_path(f),
+             method: :delete,
+             data: {confirm: "Are you sure?"},
+             class: "btn btn-outline-danger"
 
 - else
   %p Don`t have development plans

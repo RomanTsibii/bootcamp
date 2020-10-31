@@ -1,5 +1,5 @@
 %h1 Add new department
-= form_with model: @department do |f|
+= form_with model: @department, local: true do |f|
   = render 'departments/form', f: f
   %div
     = f.submit "Save", class: "btn btn-success"
