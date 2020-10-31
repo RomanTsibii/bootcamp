@@ -17,13 +17,12 @@ class DepartmentsController < ApplicationController
       flash[:notice] = 'Department was successfully updated.'
       redirect_to department_path(@department)
     else
-      flash[:alert] = @department.errors.messages
+      flash[:alert] = @department.errors.full_messages
       render :edit
     end
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @department = Department.new(department_params)
@@ -31,18 +30,17 @@ class DepartmentsController < ApplicationController
       flash[:notice] = 'Department was successfully created.'
       redirect_to department_path(@department)
     else
-      flash[:alert] = @department.errors.messages
+      flash[:alert] = @department.errors.full_messages
       render :new
     end
   end
 
   def destroy
-    flash[:alert] = @department.errors.messages unless @department.destroy
+    flash[:alert] = @department.errors.full_messages unless @department.destroy
     redirect_to departments_path
   end
 
   def export_as_pdf
-
     respond_to do |format|
       format.html { redirect_to @user, notice: 'User was successfully created.' }
       format.json { render json: @user, status: :created, location: @user }

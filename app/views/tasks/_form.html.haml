@@ -5,7 +5,7 @@
 %div
   = f.label :flow_step_id
   %br/
-  = f.select :flow_step_id, FlowStep.all.collect { |c| [c.title, c.id] }, include_blank: true
+  = f.select :flow_step_id, @development_plan.flow_steps.all.collect { |c| [c.title, c.id] }, include_blank: true
   %br/
 %div
   = f.label :level
@@ -15,4 +15,4 @@
 %div
   = f.label :description
   %br/
-  = f.rich_text_area :description, size: "70x5"
+  = f.rich_text_area :description

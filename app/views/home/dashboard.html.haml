@@ -1,0 +1,32 @@
+%h1 Dashboard
+.field
+  Department:
+  = @department.title
+%br
+.field
+  - @development_plans.each do |dp|
+    Development Plan:
+    = dp.title
+    %br
+    - unless dp.flow_steps == nil
+      .row.border.border-dark.rounded.mb-1
+        .col.col-lg-1
+          = @user_level.capitalize
+        - dp.flow_steps.each do |flow_step|
+          .col
+            = flow_step.title
+            %br/
+            - flow_step.tasks.each do |task|
+              - if task.level == @user_level
+                %br/
+                .btn-group.btn-block
+                  %button.btn.btn-outline-secondary.btn-sm
+                    = link_to task.title, development_plan_task_path(task.development_plan, task), class: "btn secondary"
+                  %button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %span.sr-only Toggle Dropdown
+                  .dropdown-menu
+                    = form_with model: task, url: development_plan_task_url(task.development_plan, task) do |f|
+                      %a.dropdown-item
+                        = f.select :flow_step_id, dp.flow_steps.collect { |c| [c.title, c.id] }, class: "dropdown-item"
+                        .dropdown-divider
+                        = f.submit "Save", class: "btn btn-success"

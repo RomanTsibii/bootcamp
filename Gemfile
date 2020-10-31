@@ -30,9 +30,9 @@ gem 'devise_invitable', '~> 2.0', '>= 2.0.2'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 gem 'pundit', '~> 2.1'
 gem 'rubocop', '~> 1.0'
+gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'wicked_pdf', '~> 2.1'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
-gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 # gem 'mailcatcher'#, '~> 0.7.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

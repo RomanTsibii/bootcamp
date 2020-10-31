@@ -9,10 +9,10 @@
           = link_to "Users", users_path, class: "nav-link"
         %li.nav-item.active
           = link_to "Development plans", development_plans_path, class: "nav-link"
-        %li.nav-item.active
-          = link_to "Tasks", tasks_path, class: "nav-link"
     %form.form-inline.mt-2.mt-md-0
       %ul.navbar-nav.mr-auto
+        %li.nav-item.active
+          = link_to "Dashboard", home_dashboard_path, class: "nav-link"
         %li.nav-item.active
           = link_to "Setting", edit_user_registration_path, class: "nav-link"
       - if current_user

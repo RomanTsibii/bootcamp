@@ -3,6 +3,7 @@
     %h1 Flow steps
   .col-md-4
     = link_to "Create new", new_development_plan_flow_step_path, class: "btn btn-success"
+    = link_to 'Show' , development_plan_tasks_path(@development_plan), class: "btn btn-outline-info"
 - if @flow_steps.present?
   %table.table
     %tr
@@ -14,17 +15,17 @@
     - @flow_steps.each do |f|
       %tr
         %td= f.id
-        %td= link_to f.title, flow_step_path(f)
-        %td= link_to f.tasks.count, flow_step_tasks_path(f)
+        %td= f.title.capitalize
+        %td= f.tasks.count
         %td= f.development_plan.title
         %td
           .btn-group
-            = link_to "Edit", edit_flow_step_path(f),
+            = link_to "Edit", edit_development_plan_flow_step_path(f.development_plan,f),
               class: "btn btn-warning"
           .btn-group
-            = button_to "Delete", flow_step_path(f),
+            = button_to "Delete", development_plan_flow_step_path(f.development_plan,f),
              method: :delete,
              data: {confirm: "Are you sure?"},
-             class: "btn btn-danger"
+             class: "btn btn-outline-danger"
 - else
   %p Don`t have a flow step

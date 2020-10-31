@@ -14,9 +14,12 @@ class TaskPolicy < ApplicationPolicy
   alias new? create?
 
   def update?
+    true
+  end
+
+  def edit?
     user.admin?
   end
-  alias edit? update?
 
   def destroy?
     user.admin?

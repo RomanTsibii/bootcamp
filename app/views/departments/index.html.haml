@@ -9,9 +9,22 @@
     %th Title
     %th Member count
     %th photo
+    %th #
   - @departments.each do |f|
     %tr
       %td= f.id
-      %td= link_to f.title, department_url(f)
+      %td= f.title.capitalize
       %td= f.users.count
       %td= image_tag f.image, width: 70 if f.image.present?
+      %td
+        .btn-group
+          = link_to "Show", department_path(f),
+                class: "btn btn-info"
+        .btn-group
+          = link_to "Edit", edit_department_path(f),
+                class: "btn btn-warning"
+        .btn-group
+          = button_to "Delete", department_path(f),
+             method: :delete,
+             data: {confirm: "Are you sure?"},
+             class: "btn btn-outline-danger"

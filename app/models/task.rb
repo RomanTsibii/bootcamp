@@ -3,6 +3,7 @@ class Task < ApplicationRecord
   has_many :users, through: :task_managements
   has_many :comments, as: :commentable
   belongs_to :flow_step
+  belongs_to :development_plan
 
   enum level: {
     trainee: 0,

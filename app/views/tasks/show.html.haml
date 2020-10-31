@@ -14,12 +14,12 @@
   = @task.description
 %div
   .btn-group
-    = link_to "Edit", edit_task_path(@task),
+    = link_to "Edit", edit_development_plan_task_path(@task.development_plan, @task),
       class: "btn btn-warning"
   .btn-group
-    = button_to "Delete", task_path(@task),
+    = button_to "Delete", development_plan_task_path(@task),
              method: :delete,
              data: {confirm: "Are you sure?"},
-             class: "btn btn-danger"
+             class: "btn btn-outline-danger"
   .btn-group
     = link_to "Back", :back, class: "btn btn-info"
