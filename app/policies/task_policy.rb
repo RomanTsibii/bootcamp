@@ -1,10 +1,10 @@
 class TaskPolicy < ApplicationPolicy
   def index?
-    true
+    user.admin?
   end
 
   def show?
-    true
+    user.admin? || user_tasks_eq_task?
   end
 
   def create?
@@ -23,6 +23,14 @@ class TaskPolicy < ApplicationPolicy
 
   def destroy?
     user.admin?
+  end
+
+  def user_tasks_eq_task?
+    user.department.development_plans.each do |development_plan|
+      development_plan.tasks.each do |task|
+        false unless task == record
+      end
+    end
   end
 
   class Scope < Scope

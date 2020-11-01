@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit destroy update]
-  before_action :task_authorize
+  before_action :task_authorize, except: %i[show]
   before_action :set_development_plan, only: %i[index create new edit update]
 
   def new
@@ -25,7 +25,9 @@ class TasksController < ApplicationController
     @levels = Task.levels
   end
 
-  def show; end
+  def show
+    authorize @task
+  end
 
   def edit; end
 

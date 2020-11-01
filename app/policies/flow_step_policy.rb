@@ -1,10 +1,6 @@
 class FlowStepPolicy < ApplicationPolicy
   def index?
-    true
-  end
-
-  def show?
-    true
+    user.admin?
   end
 
   def create?

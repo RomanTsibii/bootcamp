@@ -2,7 +2,7 @@
   = link_to "Bootcamp",  "https://docs.google.com/document/d/1sOdqGkw7ivfHPadCG6KkByPvp_Sz-nUF4lG64iERJKs/edit",class: "navbar-brand", target: "_blank"
   #navbarCollapse.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      - if current_user
+      - if current_user && current_user.admin?
         %li.nav-item.active
           = link_to "Departments", departments_path, class: "nav-link"
         %li.nav-item.active
@@ -11,10 +11,11 @@
           = link_to "Development plans", development_plans_path, class: "nav-link"
     %form.form-inline.mt-2.mt-md-0
       %ul.navbar-nav.mr-auto
-        %li.nav-item.active
-          = link_to "Dashboard", home_dashboard_path, class: "nav-link"
-        %li.nav-item.active
-          = link_to "Setting", edit_user_registration_path, class: "nav-link"
+        - if current_user
+          %li.nav-item.active
+            = link_to "Dashboard", home_dashboard_path, class: "nav-link"
+          %li.nav-item.active
+            = link_to "Setting", edit_user_registration_path, class: "nav-link"
       - if current_user
         = button_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar_hidden_button"
         = button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0"

@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: %i[edit update show destroy]
-  before_action :department_authorize
+  before_action :department_authorize, except: %i[show]
 
   def index
     @departments = Department.order(:id)
@@ -22,7 +22,9 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    authorize @department
+  end
 
   def create
     @department = Department.new(department_params)

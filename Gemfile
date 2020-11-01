@@ -33,6 +33,8 @@ gem 'rubocop', '~> 1.0'
 gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'wicked_pdf', '~> 2.1'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+
+gem 'faker', '~> 2.14'
 # gem 'mailcatcher'#, '~> 0.7.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -51,6 +53,7 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

@@ -1,20 +1,22 @@
 class DepartmentPolicy < ApplicationPolicy
   def index?
-    true
+    user.admin?
   end
 
   def show?
-    true
+    user.admin? || record == user.department
   end
 
   def new?
     user.admin?
   end
+
   alias create? new?
 
   def update?
     user.admin?
   end
+
   alias edit? update?
 
   def destroy?

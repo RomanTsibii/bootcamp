@@ -12,14 +12,15 @@
   Description:
   %br
   = @task.description
-%div
-  .btn-group
-    = link_to "Edit", edit_development_plan_task_path(@task.development_plan, @task),
-      class: "btn btn-warning"
-  .btn-group
-    = button_to "Delete", development_plan_task_path(@task),
-             method: :delete,
-             data: {confirm: "Are you sure?"},
-             class: "btn btn-outline-danger"
-  .btn-group
-    = link_to "Back", :back, class: "btn btn-info"
+- if current_user.admin?
+  %div
+    .btn-group
+      = link_to "Edit", edit_development_plan_task_path(@task.development_plan, @task),
+        class: "btn btn-warning"
+    .btn-group
+      = button_to "Delete", development_plan_task_path(@task),
+               method: :delete,
+               data: {confirm: "Are you sure?"},
+               class: "btn btn-outline-danger"
+    .btn-group
+      = link_to "Back", :back, class: "btn btn-info"
