@@ -1,9 +1,10 @@
 class CreateComments < ActiveRecord::Migration[6.0]
   def change
     create_table :comments do |t|
-      t.string :title
-      t.references :commentable, polymorphic: true
-      t.text :body, default: '', null: false
+      t.integer :task_id
+      t.integer :commentable_id
+      t.string :commentable_type
+
       t.timestamps
     end
   end

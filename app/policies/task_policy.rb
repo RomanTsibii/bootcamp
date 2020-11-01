@@ -4,7 +4,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? || user_tasks_eq_task?
+    user.admin?
   end
 
   def create?

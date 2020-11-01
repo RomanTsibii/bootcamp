@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :task_managements, dependent: :destroy
   has_many :tasks, through: :task_managements
+  has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :department
 
   has_one_attached :avatar

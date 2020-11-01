@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   has_many :task_managements, dependent: :destroy
   has_many :users, through: :task_managements
-  has_many :comments, as: :commentable
+  has_many :comments, dependent: :destroy
   belongs_to :flow_step
   belongs_to :development_plan
 

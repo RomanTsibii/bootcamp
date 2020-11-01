@@ -23,11 +23,12 @@
                     %br/
                     .btn-group.btn-block.mb-2
                       %button.btn.btn-outline-secondary.btn-sm
-                        = link_to task.title, development_plan_task_path(task.development_plan, task), class: "btn secondary"
+
+                        = link_to task.title, development_plan_task_path(dp, task), class: "btn secondary"
                       %button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                         %span.sr-only Toggle Dropdown
                       .dropdown-menu
-                        = form_with model: task, url: development_plan_task_url(task.development_plan, task) do |f|
+                        = form_with model: task, url: development_plan_task_url(dp, task) do |f|
                           %a.dropdown-item
                             = f.select :flow_step_id, dp.flow_steps.collect { |c| [c.title, c.id] }, class: "dropdown-item"
                             .dropdown-divider

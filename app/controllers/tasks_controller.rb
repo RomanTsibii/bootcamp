@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit destroy update]
   before_action :task_authorize, except: %i[show]
-  before_action :set_development_plan, only: %i[index create new edit update]
+  before_action :set_development_plan, only: %i[index create new edit update show]
 
   def new
     @task = Task.new

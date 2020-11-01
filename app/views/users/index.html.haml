@@ -12,13 +12,19 @@
       %th Last name
       %th Email
       %th Departments
-    - @users.each do |f|
+      %th
+    - @users.each do |user|
       %tr
-        %td= f.id
-        %td= f.first_name
-        %td= f.last_name
-        %td= link_to f.email, user_path(f)
-        - if f.department.present?
-          %td= f.department.title
+        %td= user.id
+        %td= user.first_name
+        %td= user.last_name
+        %td= link_to user.email, user_path(user)
+        - if user.department.present?
+          %td= user.department.title
         - else
           %td nil
+        %td
+          .btn-group
+            = link_to 'Edit', edit_user_path(user), class: "btn btn-warning"
+          .btn-group
+            = button_to 'Delete', user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger"

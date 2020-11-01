@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :users
   resources :development_plans do
     resources :flow_steps, except: %i[show]
-    resources :tasks
+    resources :tasks do
+      resources :comments
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

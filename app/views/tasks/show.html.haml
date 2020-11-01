@@ -24,3 +24,22 @@
                class: "btn btn-outline-danger"
     .btn-group
       = link_to "Back", :back, class: "btn btn-info"
+%br/
+%h3 Comments
+%br/
+- if @task.comments.present?
+  .field
+  - @task.comments.each do |comment|
+    = comment.commentable.first_name + " " + comment.commentable.last_name
+    %br/
+    = comment.content
+    %br/
+- else
+  No comments
+-# = form_with(model:  @comment, url: [@development_plan, @task, @comment], local: true) do |f|
+  %div
+    = f.label :content
+    %br/
+    = f.rich_text_area :content
+    = f.submit "Save", class: "btn btn-success"
+
