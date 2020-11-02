@@ -1,4 +1,9 @@
-%h1 Department
+.row
+  .col-md-8
+    %h1 Department
+  .col-md-4
+    = link_to "Save PDF page to email", department_send_pdf_to_mail_url(@department), class: "btn btn-success"
+
 %ul
   %li
     ID: #{@department.id}

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :departments
+  resources :departments do
+    get 'send_pdf_to_mail'
+  end
   resources :users
   resources :development_plans do
     resources :flow_steps, except: %i[show]

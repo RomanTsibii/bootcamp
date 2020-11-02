@@ -7,6 +7,10 @@ class DepartmentPolicy < ApplicationPolicy
     user.admin? || record == user.department
   end
 
+  def send_pdf_to_mail
+    user
+  end
+
   def new?
     user.admin?
   end
