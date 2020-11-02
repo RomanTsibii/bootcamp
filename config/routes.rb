@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get 'home/dashboard'
+  get 'home/send_pdf_to_mail'
 
   devise_for :users, controllers: { invitations: 'users/invitations' } do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :departments
+  resources :departments do
+    get 'send_pdf_to_mail'
+  end
   resources :users
   resources :development_plans do
     resources :flow_steps, except: %i[show]

@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: %i[edit update show destroy]
-  before_action :department_authorize, except: %i[show]
+  before_action :department_authorize, except: %i[show send_pdf_to_mail]
 
   def index
     @departments = Department.order(:id)
@@ -47,6 +47,12 @@ class DepartmentsController < ApplicationController
       format.html { redirect_to @user, notice: 'User was successfully created.' }
       format.json { render json: @user, status: :created, location: @user }
     end
+  end
+
+  def send_pdf_to_mail
+    @department = Department.find_by(id: params[:department_id])
+    flash[:notice] = 'Mail was successfully sent.' if ExportDepartmentJob.perform_later(current_user.email, @department)
+    redirect_to department_path(@department)
   end
 
   private

@@ -4,7 +4,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin?
+    user
   end
 
   def create?

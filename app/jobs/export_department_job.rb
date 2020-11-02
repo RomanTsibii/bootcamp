@@ -1,7 +1,7 @@
 class ExportDepartmentJob < ApplicationJob
   queue_as :default
 
-  def perform(email)
-    ExportMailer.send_department_data_as_pdf(email).deliver_now
+  def perform(current_user_email, department)
+    ExportMailer.send_department_data_as_pdf(current_user_email, department).deliver_now
   end
 end
