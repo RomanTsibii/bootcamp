@@ -6,4 +6,8 @@ class HomePolicy < ApplicationPolicy
   def index?
     true
   end
+
+  def send_pdf_to_mail
+    user
+  end
 end

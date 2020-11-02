@@ -1,8 +1,11 @@
-%h1 Dashboard
+.field
+  .row
+    .col-md-8
+      %h1 Dashboard
+      = link_to @department.title, department_path(@department)
+    .col-md-4
+      = link_to "Save PDF page to email", home_send_pdf_to_mail_url(@department), class: "btn btn-success"
 - if @department.present?
-  .field
-    Department:
-    = link_to @department.title, department_path(@department)
   %br
   .field
     - @department.development_plans.each do |dp|
@@ -10,29 +13,29 @@
       = dp.title
       %br
       - unless dp.flow_steps == nil
-        - @levels.each do |level|
-          .row.border.border-dark.rounded.mb-1
-            .col.col-lg-1
-              = level[0].capitalize
-            - dp.flow_steps.each do |flow_step|
-              .col
-                = flow_step.title
-                %br/
-                - flow_step.tasks.each do |task|
-                  - if task.level == level[0]
-                    %br/
-                    .btn-group.btn-block.mb-2
-                      %button.btn.btn-outline-secondary.btn-sm
+        - user_level = current_user.level
+        .row.border.border-dark.rounded.mb-1
+          .col.col-lg-1
+            = user_level.capitalize
+          - dp.flow_steps.each do |flow_step|
+            .col
+              = flow_step.title
+              %br/
+              - flow_step.tasks.each do |task|
+                - if task.level == user_level
+                  %br/
+                  .btn-group.btn-block.mb-2
+                    %button.btn.btn-outline-secondary.btn-sm
 
-                        = link_to task.title, development_plan_task_path(dp, task), class: "btn secondary"
-                      %button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                        %span.sr-only Toggle Dropdown
-                      .dropdown-menu
-                        = form_with model: task, url: development_plan_task_url(dp, task) do |f|
-                          %a.dropdown-item
-                            = f.select :flow_step_id, dp.flow_steps.collect { |c| [c.title, c.id] }, class: "dropdown-item"
-                            .dropdown-divider
-                            = f.submit "Save", class: "btn btn-success"
+                      = link_to task.title, development_plan_task_path(dp, task), class: "btn secondary"
+                    %button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                      %span.sr-only Toggle Dropdown
+                    .dropdown-menu
+                      = form_with model: task, url: development_plan_task_url(dp, task) do |f|
+                        %a.dropdown-item
+                          = f.select :flow_step_id, dp.flow_steps.collect { |c| [c.title, c.id] }, class: "dropdown-item"
+                          .dropdown-divider
+                          = f.submit "Save", class: "btn btn-success"
 - else
   .field
     You do not have a department

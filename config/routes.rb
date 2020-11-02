@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get 'home/dashboard'
+  get 'home/send_pdf_to_mail'
 
   devise_for :users, controllers: { invitations: 'users/invitations' } do
     get '/users/sign_out' => 'devise/sessions#destroy'
