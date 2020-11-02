@@ -15,7 +15,7 @@
           %li.nav-item.active
             = link_to "Dashboard", home_dashboard_path, class: "nav-link"
           %li.nav-item.active
-            = link_to "Setting", edit_user_registration_path, class: "nav-link"
+            = link_to "Settings", edit_user_registration_path, class: "nav-link"
       - if current_user
         = button_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar_hidden_button"
         = button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0"

@@ -48,22 +48,6 @@ describe UsersController, type: :controller do
     end
   end
 
-  describe 'update' do
-    subject { put :update, params: { id: current_user.id, first_name: 'Updated' } }
-
-    before(:each) do
-      subject
-    end
-
-    it 'should return success' do
-      expect(response).to have_http_status(302)
-    end
-
-    it 'should update user' do
-      expect(current_user.reload.first_name).to eq('Updated')
-    end
-  end
-
   describe 'destroy' do
     subject { delete :destroy, params: { id: current_user.id } }
 

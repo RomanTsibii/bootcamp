@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   def send_pdf_to_mail
     @department = current_user.department
-    flash[:notice] = 'Mail was successfully sent.' if ExportDashboardJob.perform_later(current_user.email, @department, current_user)
+    flash[:notice] = 'Email was successfully sent.' if ExportDashboardJob.perform_later(current_user.email, @department, current_user)
     redirect_to home_dashboard_path
   end
 
